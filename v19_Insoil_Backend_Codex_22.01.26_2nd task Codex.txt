@@ -52,6 +52,18 @@ function getBuildInfo() {
   };
 }
 
+// Optional helper: save rendered HTML to Drive for sharing
+function saveRenderedHtmlToDrive(html, filename) {
+  if (!html) throw new Error('No HTML provided for export.');
+  const safeName = filename || 'rendered-report.html';
+  const file = DriveApp.createFile(safeName, html, MimeType.HTML);
+  return {
+    ok: true,
+    id: file.getId(),
+    url: file.getUrl()
+  };
+}
+
 
 
 
